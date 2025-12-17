@@ -1,0 +1,2391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elevator Cost Estimator | Triangle Clif Elevators Bangalore</title>
+    <meta name="description" content="Get instant estimated cost for elevator installation in Bangalore. Calculate pricing for passenger, home, hospital, commercial, freight, and accessibility elevators.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            /* Color Palette */
+            --primary-blue: #1a365d;
+            --secondary-blue: #2d50a3;
+            --accent-blue: #4a6ee0;
+            --dark-gray: #333333;
+            --medium-gray: #666666;
+            --light-gray: #f5f7fa;
+            --white: #ffffff;
+            --highlight: #ff6b35;
+            --whatsapp-green: #25D366;
+            --phone-green: #34B7F1;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --info-blue: #3b82f6;
+            
+            /* Typography */
+            --font-heading: 'Poppins', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-xxl: 4rem;
+            
+            /* Border Radius */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --radius-full: 9999px;
+            
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 12px 40px rgba(0, 0, 0, 0.2);
+            
+            /* Transitions */
+            --transition-fast: 0.2s ease;
+            --transition-medium: 0.3s ease;
+            --transition-slow: 0.5s ease;
+            --transition-bounce: 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 28px;
+            border-radius: var(--radius-md);
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-decoration: none;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+            transition: all var(--transition-medium);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+        
+        .btn-large {
+            padding: 16px 36px;
+            font-size: 1.125rem;
+        }
+        
+        .btn-full {
+            width: 100%;
+        }
+        
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.875rem;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Animation Classes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(26, 54, 93, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(26, 54, 93, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(26, 54, 93, 0); }
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+        
+        .hover-lift {
+            transition: all var(--transition-medium);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+        
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            box-shadow: var(--shadow-lg);
+            transition: all var(--transition-bounce);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .floating-btn:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp-green);
+        }
+        
+        .phone-btn {
+            background-color: var(--phone-green);
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .floating-btn:hover .floating-tooltip {
+            opacity: 1;
+            transform: translateX(-10px) translateY(-50%);
+        }
+        
+        .floating-tooltip {
+            position: absolute;
+            right: 70px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 8px 12px;
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            transition: all var(--transition-medium);
+            pointer-events: none;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .floating-tooltip::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -6px;
+            transform: translateY(-50%);
+            border-width: 6px 0 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent var(--primary-blue);
+        }
+        
+        /* Header */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            transition: all var(--transition-medium);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-sm) 0;
+        }
+        
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: var(--primary-blue);
+            transition: transform var(--transition-medium);
+        }
+        
+        .logo a:hover {
+            transform: scale(1.02);
+        }
+        
+        .logo-icon {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-blue);
+            border-radius: var(--radius-md);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: var(--space-sm);
+            flex-shrink: 0;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .logo-icon i {
+            color: var(--white);
+            font-size: 1.25rem;
+            position: absolute;
+            animation: arrowUpDown 2s infinite;
+        }
+        
+        @keyframes arrowUpDown {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(3px); }
+        }
+        
+        .logo-icon i:first-child {
+            top: 10px;
+        }
+        
+        .logo-icon i:last-child {
+            bottom: 10px;
+            animation-delay: 0.5s;
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .logo-main {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            font-size: 1.5rem;
+            line-height: 1.2;
+            white-space: nowrap;
+        }
+        
+        .logo-sub {
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            white-space: nowrap;
+        }
+        
+        /* Estimator Header */
+        .estimator-header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: var(--white);
+            padding: var(--space-xxl) 0 var(--space-xl);
+            text-align: center;
+            margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .estimator-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,100 L100,0 L100,100 Z" fill="%23ffffff" opacity="0.05"/></svg>');
+            background-size: cover;
+            pointer-events: none;
+        }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            display: inline-block;
+            animation: slideInLeft 0.8s ease;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--highlight);
+            border-radius: 2px;
+            animation: underlineGrow 1s ease forwards;
+        }
+        
+        @keyframes underlineGrow {
+            0% { width: 0; }
+            100% { width: 80px; }
+        }
+        
+        .section-subtitle {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: slideInRight 0.8s ease 0.2s both;
+        }
+        
+        .hero-actions {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+            justify-content: center;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        /* Estimator Container */
+        .estimator-container {
+            max-width: 900px;
+            margin: -60px auto var(--space-xxl);
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        /* Progress Bar */
+        .estimator-progress {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: var(--space-lg);
+            background-color: var(--light-gray);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
+        }
+        
+        .step-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 3px solid #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: #6b7280;
+            margin-bottom: var(--space-xs);
+            transition: all var(--transition-medium);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .step-circle::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: conic-gradient(var(--success-green) 0%, var(--success-green) 0%, #e5e7eb 0%, #e5e7eb 100%);
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        
+        .step-circle.active {
+            border-color: var(--primary-blue);
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        .step-circle.completed {
+            border-color: var(--success-green);
+            background-color: var(--success-green);
+            color: var(--white);
+        }
+        
+        .step-circle.completed::before {
+            background: conic-gradient(var(--success-green) 100%, var(--success-green) 100%, #e5e7eb 100%, #e5e7eb 100%);
+        }
+        
+        .step-label {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all var(--transition-medium);
+        }
+        
+        .step-label.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .progress-line {
+            position: absolute;
+            top: 58px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background-color: #d1d5db;
+            z-index: 1;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-green), #34d399);
+            border-radius: 2px;
+            width: 0%;
+            transition: width 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Estimator Content */
+        .estimator-content {
+            padding: var(--space-xl);
+        }
+        
+        .estimator-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .estimator-step.active {
+            display: block;
+        }
+        
+        .step-title {
+            font-family: var(--font-heading);
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-md);
+            animation: slideInLeft 0.5s ease;
+        }
+        
+        .step-subtitle {
+            color: var(--medium-gray);
+            margin-bottom: var(--space-xl);
+            font-size: 1.125rem;
+            animation: slideInRight 0.5s ease 0.1s both;
+        }
+        
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: var(--space-md);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .option-card {
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-md);
+            padding: var(--space-lg);
+            cursor: pointer;
+            transition: all var(--transition-bounce);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--white);
+        }
+        
+        .option-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 110, 224, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .option-card:hover::before {
+            left: 100%;
+        }
+        
+        .option-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .option-card.selected {
+            border-color: var(--primary-blue);
+            background-color: rgba(26, 54, 93, 0.05);
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            animation: cardSelected 0.5s ease;
+        }
+        
+        @keyframes cardSelected {
+            0% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-10px) scale(1.05); }
+            100% { transform: translateY(-5px) scale(1.02); }
+        }
+        
+        .option-icon {
+            width: 70px;
+            height: 70px;
+            background-color: var(--light-gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto var(--space-md);
+            transition: all var(--transition-bounce);
+            position: relative;
+        }
+        
+        .option-icon::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all var(--transition-medium);
+        }
+        
+        .option-card:hover .option-icon::after {
+            border-color: var(--accent-blue);
+            animation: ripple 1.5s infinite;
+        }
+        
+        .option-icon i {
+            font-size: 1.75rem;
+            color: var(--primary-blue);
+            transition: all var(--transition-medium);
+        }
+        
+        .option-card.selected .option-icon {
+            background-color: var(--primary-blue);
+            transform: rotate(15deg) scale(1.1);
+        }
+        
+        .option-card.selected .option-icon i {
+            color: var(--white);
+            transform: rotate(-15deg);
+        }
+        
+        .option-title {
+            font-family: var(--font-heading);
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .option-desc {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+            line-height: 1.5;
+        }
+        
+        /* Form Controls */
+        .form-control {
+            margin-bottom: var(--space-lg);
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .form-control label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--primary-blue);
+            font-size: 1.125rem;
+        }
+        
+        .range-container {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            background-color: var(--light-gray);
+            padding: var(--space-lg);
+            border-radius: var(--radius-lg);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .range-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+            opacity: 0.1;
+        }
+        
+        .range-value {
+            min-width: 100px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            font-size: 1.25rem;
+            text-align: center;
+            background-color: var(--white);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-medium);
+        }
+        
+        .range-container:hover .range-value {
+            transform: scale(1.05);
+            box-shadow: var(--shadow-md);
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            height: 10px;
+            -webkit-appearance: none;
+            background: linear-gradient(90deg, var(--light-gray), #dbeafe);
+            border-radius: 5px;
+            outline: none;
+            position: relative;
+        }
+        
+        input[type="range"]::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--progress-width, 50%);
+            background: linear-gradient(90deg, var(--primary-blue), var(--accent-blue));
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--primary-blue);
+            cursor: pointer;
+            border: 4px solid var(--white);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: all var(--transition-medium);
+            position: relative;
+            z-index: 2;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.2);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+        
+        select {
+            width: 100%;
+            padding: 14px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background-color: var(--white);
+            color: var(--dark-gray);
+            cursor: pointer;
+            transition: all var(--transition-medium);
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231a365d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 20px center;
+            background-size: 16px;
+        }
+        
+        select:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(74, 110, 224, 0.1);
+        }
+        
+        select:hover {
+            border-color: var(--accent-blue);
+        }
+        
+        /* Estimate Result */
+        .estimate-result {
+            text-align: center;
+            padding: var(--space-xl);
+            background: linear-gradient(135deg, var(--light-gray), #e8eef9);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--space-xl);
+            animation: fadeInUp 0.8s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .estimate-result::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--highlight), #ff8b5c);
+        }
+        
+        .estimate-label {
+            font-size: 1rem;
+            color: var(--medium-gray);
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        
+        .estimate-price {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-sm);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .estimate-price::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--highlight), #ff8b5c);
+            border-radius: 2px;
+        }
+        
+        .price-range {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+            flex-wrap: wrap;
+        }
+        
+        .price-item {
+            padding: var(--space-md);
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            min-width: 180px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-bounce);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .price-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary-blue), var(--accent-blue));
+        }
+        
+        .price-item:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .price-type {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+            margin-bottom: var(--space-xs);
+            font-weight: 500;
+        }
+        
+        .price-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-blue);
+        }
+        
+        .price-disclaimer {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+            margin-top: var(--space-md);
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin: var(--space-lg) 0;
+        }
+        
+        .feature-list li {
+            padding: var(--space-sm) 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            transition: all var(--transition-medium);
+            animation: fadeInUp 0.5s ease;
+            animation-fill-mode: both;
+        }
+        
+        .feature-list li:nth-child(1) { animation-delay: 0.1s; }
+        .feature-list li:nth-child(2) { animation-delay: 0.2s; }
+        .feature-list li:nth-child(3) { animation-delay: 0.3s; }
+        .feature-list li:nth-child(4) { animation-delay: 0.4s; }
+        .feature-list li:nth-child(5) { animation-delay: 0.5s; }
+        
+        .feature-list li:hover {
+            transform: translateX(10px);
+            background-color: rgba(26, 54, 93, 0.03);
+            padding-left: var(--space-sm);
+            border-radius: var(--radius-sm);
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-list i {
+            color: var(--success-green);
+            margin-right: var(--space-sm);
+            font-size: 1.25rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .feature-list li:hover i {
+            transform: scale(1.2) rotate(10deg);
+            color: var(--highlight);
+        }
+        
+        /* Navigation */
+        .estimator-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-xl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+        
+        .back-to-home {
+            text-align: center;
+            margin-top: var(--space-xl);
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+        
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            opacity: 1;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: var(--space-xl);
+            position: relative;
+            animation: modalAppear 0.3s ease;
+            box-shadow: var(--shadow-xl);
+        }
+        
+        @keyframes modalAppear {
+            from { opacity: 0; transform: scale(0.9) translateY(20px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--medium-gray);
+            transition: all var(--transition-medium);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-close:hover {
+            background-color: var(--light-gray);
+            color: var(--primary-blue);
+            transform: rotate(90deg);
+        }
+        
+        .modal-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-md);
+        }
+        
+        .estimate-summary {
+            background-color: var(--light-gray);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            margin: var(--space-lg) 0;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        /* Form Styles */
+        .form-group {
+            margin-bottom: var(--space-md);
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--primary-blue);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid #e0e7ff;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: all var(--transition-medium);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 0 3px rgba(74, 110, 224, 0.1);
+        }
+        
+        .form-group input:hover,
+        .form-group textarea:hover {
+            border-color: var(--accent-blue);
+        }
+        
+        .form-message {
+            margin-top: var(--space-md);
+            padding: var(--space-md);
+            border-radius: var(--radius-md);
+            text-align: center;
+            font-weight: 500;
+            display: none;
+            animation: fadeInUp 0.5s ease;
+        }
+        
+        .form-message.success {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: #047857;
+            display: block;
+        }
+        
+        .form-message.error {
+            background-color: rgba(239, 68, 68, 0.1);
+            color: #b91c1c;
+            display: block;
+        }
+        
+        /* Footer */
+        .main-footer {
+            background: linear-gradient(135deg, #0a1a3a, var(--primary-blue));
+            color: var(--white);
+            padding: var(--space-xl) 0 var(--space-md);
+            position: relative;
+            margin-top: var(--space-xl);
+        }
+        
+        .main-footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--highlight), #ff8b5c);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: var(--space-lg) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+        
+        .footer-legal {
+            display: flex;
+            gap: var(--space-lg);
+        }
+        
+        .footer-legal a {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color var(--transition-fast);
+        }
+        
+        .footer-legal a:hover {
+            color: var(--highlight);
+        }
+        
+        .footer-legal a i {
+            font-size: 0.8rem;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 var(--space-lg);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .estimator-container {
+                margin: -40px auto var(--space-xl);
+            }
+            
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .price-range {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .price-item {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .estimator-navigation {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .estimator-navigation .btn {
+                width: 100%;
+            }
+            
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-actions .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+            
+            .floating-tooltip {
+                display: none;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: var(--space-md);
+                text-align: center;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: var(--space-sm);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+            
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .estimate-price {
+                font-size: 2.5rem;
+            }
+            
+            .step-title {
+                font-size: 1.5rem;
+            }
+            
+            .logo-main {
+                font-size: 1.25rem;
+            }
+            
+            .modal-container {
+                padding: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header" id="mainHeader">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html" aria-label="Triangle Clif Elevators Home">
+                        <div class="logo-icon">
+                            <i class="fas fa-arrow-up"></i>
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="logo-text">
+                            <span class="logo-main">TRIANGLE CLIF ELEVATORS</span>
+                            <span class="logo-sub">BANGALORE | EST. 1995</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="header-cta">
+                    <a href="index.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i> Back to Main Site
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Estimator Header -->
+    <section class="estimator-header">
+        <div class="container">
+            <h1 class="section-title">Elevator Cost Estimator</h1>
+            <p class="section-subtitle">Get an instant estimated price range for your elevator project in Bangalore</p>
+            <div class="hero-actions">
+                <a href="tel:+917019756807" class="btn btn-secondary btn-large">
+                    <i class="fas fa-phone-alt"></i> Call Expert: +91 70197 56807
+                </a>
+                <a href="#estimate-result" class="btn btn-outline btn-large" style="background-color: rgba(255,255,255,0.1); color: white; border-color: white;">
+                    <i class="fas fa-calculator"></i> Quick Estimate
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estimator Container -->
+    <main class="container">
+        <div class="estimator-container">
+            <!-- Progress Bar -->
+            <div class="estimator-progress">
+                <div class="progress-line">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                
+                <div class="progress-step">
+                    <div class="step-circle active" id="step1Circle">1</div>
+                    <div class="step-label active">Elevator Type</div>
+                </div>
+                
+                <div class="progress-step">
+                    <div class="step-circle" id="step2Circle">2</div>
+                    <div class="step-label">Specifications</div>
+                </div>
+                
+                <div class="progress-step">
+                    <div class="step-circle" id="step3Circle">3</div>
+                    <div class="step-label">Location</div>
+                </div>
+                
+                <div class="progress-step">
+                    <div class="step-circle" id="step4Circle">4</div>
+                    <div class="step-label">Estimate</div>
+                </div>
+            </div>
+
+            <!-- Estimator Content -->
+            <div class="estimator-content">
+                <!-- Step 1: Elevator Type -->
+                <div class="estimator-step active" id="step1">
+                    <h2 class="step-title">Select Elevator Type</h2>
+                    <p class="step-subtitle">Choose the type of elevator you need for your project</p>
+                    
+                    <div class="options-grid">
+                        <div class="option-card" data-type="passenger">
+                            <div class="option-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="option-title">Passenger Elevator</h3>
+                            <p class="option-desc">For residential & commercial buildings</p>
+                            <div class="option-badge" style="position: absolute; top: 10px; right: 10px; background-color: var(--highlight); color: white; padding: 4px 8px; border-radius: 12px; font-size: 0.7rem; font-weight: 600;">POPULAR</div>
+                        </div>
+                        
+                        <div class="option-card" data-type="home">
+                            <div class="option-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="option-title">Home Elevator</h3>
+                            <p class="option-desc">For private residences & villas</p>
+                        </div>
+                        
+                        <div class="option-card" data-type="hospital">
+                            <div class="option-icon">
+                                <i class="fas fa-hospital"></i>
+                            </div>
+                            <h3 class="option-title">Hospital Elevator</h3>
+                            <p class="option-desc">For healthcare facilities</p>
+                        </div>
+                        
+                        <div class="option-card" data-type="commercial">
+                            <div class="option-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <h3 class="option-title">Commercial Elevator</h3>
+                            <p class="option-desc">For offices, malls & public spaces</p>
+                        </div>
+                        
+                        <div class="option-card" data-type="freight">
+                            <div class="option-icon">
+                                <i class="fas fa-dolly"></i>
+                            </div>
+                            <h3 class="option-title">Freight Elevator</h3>
+                            <p class="option-desc">For industrial & commercial use</p>
+                        </div>
+                        
+                        <div class="option-card" data-type="accessibility">
+                            <div class="option-icon">
+                                <i class="fas fa-wheelchair"></i>
+                            </div>
+                            <h3 class="option-title">Accessibility Elevator</h3>
+                            <p class="option-desc">For accessibility needs</p>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <div></div> <!-- Empty div for spacing -->
+                        <button class="btn btn-primary pulse-animation" id="nextStep1">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Specifications -->
+                <div class="estimator-step" id="step2">
+                    <h2 class="step-title">Elevator Specifications</h2>
+                    <p class="step-subtitle">Provide details about your elevator requirements</p>
+                    
+                    <div class="form-control">
+                        <label for="floors">
+                            <i class="fas fa-layer-group"></i> Number of Floors / Stops
+                        </label>
+                        <div class="range-container">
+                            <span class="range-value" id="floorsValue">2 floors</span>
+                            <input type="range" id="floors" min="2" max="15" value="2" step="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label for="capacity">
+                            <i class="fas fa-users"></i> Passenger / Load Capacity
+                        </label>
+                        <div class="range-container">
+                            <span class="range-value" id="capacityValue">4 persons</span>
+                            <input type="range" id="capacity" min="1" max="10" value="4" step="1">
+                        </div>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label for="quality">
+                            <i class="fas fa-gem"></i> Quality & Features Level
+                        </label>
+                        <div class="options-grid" style="grid-template-columns: repeat(3, 1fr);">
+                            <div class="option-card" data-quality="basic">
+                                <div class="option-icon">
+                                    <i class="fas fa-cube"></i>
+                                </div>
+                                <h3 class="option-title">Basic</h3>
+                                <p class="option-desc">Standard features, reliable operation</p>
+                            </div>
+                            
+                            <div class="option-card" data-quality="standard">
+                                <div class="option-icon">
+                                    <i class="fas fa-cubes"></i>
+                                </div>
+                                <h3 class="option-title">Standard</h3>
+                                <p class="option-desc">Enhanced features, better finishes</p>
+                            </div>
+                            
+                            <div class="option-card" data-quality="premium">
+                                <div class="option-icon">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <h3 class="option-title">Premium</h3>
+                                <p class="option-desc">Luxury finishes, advanced technology</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-outline" id="prevStep2">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary pulse-animation" id="nextStep2">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Location -->
+                <div class="estimator-step" id="step3">
+                    <h2 class="step-title">Project Location & Details</h2>
+                    <p class="step-subtitle">Tell us about your project location and building type</p>
+                    
+                    <div class="form-control">
+                        <label for="buildingType">
+                            <i class="fas fa-city"></i> Building Type
+                        </label>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="option-card" data-building="residential">
+                                <div class="option-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h3 class="option-title">Residential</h3>
+                                <p class="option-desc">House, Apartment, Villa</p>
+                            </div>
+                            
+                            <div class="option-card" data-building="commercial">
+                                <div class="option-icon">
+                                    <i class="fas fa-building"></i>
+                                </div>
+                                <h3 class="option-title">Commercial</h3>
+                                <p class="option-desc">Office, Mall, Hotel</p>
+                            </div>
+                            
+                            <div class="option-card" data-building="hospital">
+                                <div class="option-icon">
+                                    <i class="fas fa-hospital"></i>
+                                </div>
+                                <h3 class="option-title">Hospital / Healthcare</h3>
+                                <p class="option-desc">Hospital, Clinic, Nursing Home</p>
+                            </div>
+                            
+                            <div class="option-card" data-building="industrial">
+                                <div class="option-icon">
+                                    <i class="fas fa-industry"></i>
+                                </div>
+                                <h3 class="option-title">Industrial</h3>
+                                <p class="option-desc">Factory, Warehouse, Plant</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label for="location">
+                            <i class="fas fa-map-marker-alt"></i> Location in Bangalore
+                        </label>
+                        <select id="location">
+                            <option value="">Select Location</option>
+                            <option value="central">Central Bangalore</option>
+                            <option value="north">North Bangalore</option>
+                            <option value="south">South Bangalore</option>
+                            <option value="east">East Bangalore</option>
+                            <option value="west">West Bangalore</option>
+                            <option value="other">Other (Karnataka)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-control">
+                        <label for="installation">
+                            <i class="fas fa-tools"></i> Installation Type
+                        </label>
+                        <div class="options-grid" style="grid-template-columns: repeat(2, 1fr);">
+                            <div class="option-card" data-installation="new">
+                                <div class="option-icon">
+                                    <i class="fas fa-plus-circle"></i>
+                                </div>
+                                <h3 class="option-title">New Installation</h3>
+                                <p class="option-desc">Fresh installation in new building</p>
+                            </div>
+                            
+                            <div class="option-card" data-installation="replacement">
+                                <div class="option-icon">
+                                    <i class="fas fa-sync-alt"></i>
+                                </div>
+                                <h3 class="option-title">Replacement</h3>
+                                <p class="option-desc">Replace existing elevator</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-outline" id="prevStep3">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary pulse-animation" id="nextStep3">
+                            Get Estimate <i class="fas fa-calculator"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Estimate Results -->
+                <div class="estimator-step" id="step4">
+                    <h2 class="step-title">Your Estimated Cost</h2>
+                    <p class="step-subtitle" id="estimate-result">Based on your specifications, here's an estimated price range</p>
+                    
+                    <div class="estimate-result">
+                        <div class="estimate-label">Estimated Price Range</div>
+                        <div class="estimate-price" id="estimatedPrice">₹ 0</div>
+                        
+                        <div class="price-range">
+                            <div class="price-item">
+                                <div class="price-type">Basic Package</div>
+                                <div class="price-value" id="basicPrice">₹ 0</div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-type">Standard Package</div>
+                                <div class="price-value" id="standardPrice">₹ 0</div>
+                            </div>
+                            
+                            <div class="price-item">
+                                <div class="price-type">Premium Package</div>
+                                <div class="price-value" id="premiumPrice">₹ 0</div>
+                            </div>
+                        </div>
+                        
+                        <p class="price-disclaimer">* Prices are estimates. Final quote may vary based on site conditions, customization, and additional requirements.</p>
+                    </div>
+                    
+                    <h3 class="step-title" style="font-size: 1.5rem;">
+                        <i class="fas fa-check-circle"></i> What's Included:
+                    </h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Elevator cabin with selected finish</li>
+                        <li><i class="fas fa-check-circle"></i> Complete installation by certified technicians</li>
+                        <li><i class="fas fa-check-circle"></i> Safety systems and certifications</li>
+                        <li><i class="fas fa-check-circle"></i> 1-year warranty on parts and labor</li>
+                        <li><i class="fas fa-check-circle"></i> Free site inspection and consultation</li>
+                    </ul>
+                    
+                    <div class="estimator-navigation">
+                        <button class="btn btn-outline" id="prevStep4">
+                            <i class="fas fa-arrow-left"></i> Back
+                        </button>
+                        <button class="btn btn-primary pulse-animation" id="confirmEstimate">
+                            Confirm with Expert <i class="fas fa-user-tie"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="back-to-home">
+            <a href="index.html" class="btn btn-outline">
+                <i class="fas fa-home"></i> Back to Home Page
+            </a>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal -->
+    <div class="modal-overlay" id="confirmationModal">
+        <div class="modal-container">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="modal-title">Confirm Your Estimate</h2>
+            <p>Our elevator expert will contact you within 24 hours to discuss your project and provide an exact quote.</p>
+            
+            <div class="estimate-summary">
+                <h3 style="font-size: 1.125rem; margin-bottom: var(--space-sm); color: var(--primary-blue);">
+                    <i class="fas fa-file-invoice"></i> Estimate Summary:
+                </h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-sm);">
+                    <div><strong>Elevator Type:</strong> <span id="summaryType">-</span></div>
+                    <div><strong>Floors:</strong> <span id="summaryFloors">-</span></div>
+                    <div><strong>Capacity:</strong> <span id="summaryCapacity">-</span></div>
+                    <div><strong>Building Type:</strong> <span id="summaryBuilding">-</span></div>
+                    <div><strong>Location:</strong> <span id="summaryLocation">-</span></div>
+                    <div><strong>Estimated Price:</strong> <span id="summaryPrice">-</span></div>
+                </div>
+            </div>
+            
+            <form id="confirmationForm">
+                <div class="form-group">
+                    <label for="confirmName">Your Name *</label>
+                    <input type="text" id="confirmName" required placeholder="Enter your name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPhone">Phone Number *</label>
+                    <input type="tel" id="confirmPhone" required placeholder="+91 " value="+91 ">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmEmail">Email Address</label>
+                    <input type="email" id="confirmEmail" placeholder="Enter your email">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmMessage">Additional Notes</label>
+                    <textarea id="confirmMessage" rows="3" placeholder="Any specific requirements or questions..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-paper-plane"></i> Submit & Get Exact Quote
+                </button>
+                
+                <div class="form-message" id="confirmMessageEl"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/917019756807?text=Hi%20Triangle%20Clif%2C%20I%20just%20used%20your%20cost%20estimator%20and%20need%20an%20exact%20quote" 
+           class="floating-btn whatsapp-btn" 
+           target="_blank"
+           aria-label="Contact on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="floating-tooltip">Get Quote on WhatsApp</span>
+        </a>
+        <a href="tel:+917019756807" 
+           class="floating-btn phone-btn"
+           aria-label="Call us">
+            <i class="fas fa-phone"></i>
+            <span class="floating-tooltip">Call Expert Now</span>
+        </a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>&copy; <span id="currentYear"></span> Triangle Clif Elevators, Bangalore. All rights reserved.</p>
+                </div>
+                
+                <div class="footer-legal">
+                    <a href="index.html"><i class="fas fa-home"></i> Back to Home</a>
+                    <a href="index.html#contact"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Cost Estimator JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Initialize the cost estimator
+            initCostEstimator();
+        });
+        
+        function initCostEstimator() {
+            // State object to store user selections
+            const state = {
+                elevatorType: null,
+                floors: 2,
+                capacity: 4,
+                quality: 'standard',
+                buildingType: null,
+                location: null,
+                installation: 'new'
+            };
+            
+            // Price ranges per elevator type (base price in INR)
+            const priceRanges = {
+                passenger: { basic: 800000, standard: 1200000, premium: 1800000 },
+                home: { basic: 700000, standard: 1000000, premium: 1500000 },
+                hospital: { basic: 1500000, standard: 2200000, premium: 3200000 },
+                commercial: { basic: 1000000, standard: 1600000, premium: 2400000 },
+                freight: { basic: 1200000, standard: 1800000, premium: 2600000 },
+                accessibility: { basic: 500000, standard: 800000, premium: 1200000 }
+            };
+            
+            // Multipliers for different factors
+            const multipliers = {
+                floors: { base: 1, perFloor: 0.08 }, // 8% increase per floor
+                capacity: { base: 1, perPerson: 0.05 }, // 5% increase per person
+                quality: { basic: 0.9, standard: 1, premium: 1.4 },
+                buildingType: { residential: 1, commercial: 1.1, hospital: 1.2, industrial: 1.05 },
+                location: { central: 1.05, north: 1, south: 1, east: 1, west: 1, other: 1.1 },
+                installation: { new: 1, replacement: 1.15 }
+            };
+            
+            // DOM elements
+            const steps = document.querySelectorAll('.estimator-step');
+            const optionCards = document.querySelectorAll('.option-card');
+            const progressFill = document.getElementById('progressFill');
+            const stepCircles = document.querySelectorAll('.step-circle');
+            const stepLabels = document.querySelectorAll('.step-label');
+            
+            // Input elements
+            const floorsInput = document.getElementById('floors');
+            const floorsValue = document.getElementById('floorsValue');
+            const capacityInput = document.getElementById('capacity');
+            const capacityValue = document.getElementById('capacityValue');
+            const locationSelect = document.getElementById('location');
+            
+            // Navigation buttons
+            const nextStep1Btn = document.getElementById('nextStep1');
+            const nextStep2Btn = document.getElementById('nextStep2');
+            const nextStep3Btn = document.getElementById('nextStep3');
+            const prevStep2Btn = document.getElementById('prevStep2');
+            const prevStep3Btn = document.getElementById('prevStep3');
+            const prevStep4Btn = document.getElementById('prevStep4');
+            const confirmEstimateBtn = document.getElementById('confirmEstimate');
+            
+            // Result elements
+            const estimatedPrice = document.getElementById('estimatedPrice');
+            const basicPrice = document.getElementById('basicPrice');
+            const standardPrice = document.getElementById('standardPrice');
+            const premiumPrice = document.getElementById('premiumPrice');
+            
+            // Modal elements
+            const confirmationModal = document.getElementById('confirmationModal');
+            const modalClose = document.getElementById('modalClose');
+            const confirmationForm = document.getElementById('confirmationForm');
+            const confirmMessageEl = document.getElementById('confirmMessageEl');
+            
+            // Summary elements
+            const summaryType = document.getElementById('summaryType');
+            const summaryFloors = document.getElementById('summaryFloors');
+            const summaryCapacity = document.getElementById('summaryCapacity');
+            const summaryBuilding = document.getElementById('summaryBuilding');
+            const summaryLocation = document.getElementById('summaryLocation');
+            const summaryPrice = document.getElementById('summaryPrice');
+            
+            // Current step
+            let currentStep = 1;
+            
+            // Initialize event listeners
+            initEventListeners();
+            
+            function initEventListeners() {
+                // Step 1: Elevator type selection
+                document.querySelectorAll('[data-type]').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove selection from all cards
+                        document.querySelectorAll('[data-type]').forEach(c => {
+                            c.classList.remove('selected');
+                        });
+                        
+                        // Select clicked card
+                        this.classList.add('selected');
+                        state.elevatorType = this.getAttribute('data-type');
+                        
+                        // Animate selection
+                        animateSelection(this);
+                        
+                        // Enable next button
+                        nextStep1Btn.disabled = false;
+                    });
+                });
+                
+                // Step 1: Next button
+                nextStep1Btn.addEventListener('click', function() {
+                    if (!state.elevatorType) {
+                        showAlert('Please select an elevator type to continue.');
+                        return;
+                    }
+                    
+                    goToStep(2);
+                });
+                
+                // Step 2: Range inputs
+                floorsInput.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    floorsValue.textContent = value + (value === 1 ? ' floor' : ' floors');
+                    state.floors = value;
+                    
+                    // Update range visual
+                    updateRangeVisual(this);
+                });
+                
+                capacityInput.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    let displayText = '';
+                    
+                    if (state.elevatorType === 'freight') {
+                        displayText = (value * 100) + ' kg';
+                    } else {
+                        displayText = value + (value === 1 ? ' person' : ' persons');
+                    }
+                    
+                    capacityValue.textContent = displayText;
+                    state.capacity = value;
+                    
+                    // Update range visual
+                    updateRangeVisual(this);
+                });
+                
+                // Step 2: Quality selection
+                document.querySelectorAll('[data-quality]').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove selection from all cards
+                        document.querySelectorAll('[data-quality]').forEach(c => {
+                            c.classList.remove('selected');
+                        });
+                        
+                        // Select clicked card
+                        this.classList.add('selected');
+                        state.quality = this.getAttribute('data-quality');
+                        
+                        // Animate selection
+                        animateSelection(this);
+                    });
+                });
+                
+                // Step 2: Navigation
+                nextStep2Btn.addEventListener('click', function() {
+                    goToStep(3);
+                });
+                
+                prevStep2Btn.addEventListener('click', function() {
+                    goToStep(1);
+                });
+                
+                // Step 3: Building type selection
+                document.querySelectorAll('[data-building]').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove selection from all cards
+                        document.querySelectorAll('[data-building]').forEach(c => {
+                            c.classList.remove('selected');
+                        });
+                        
+                        // Select clicked card
+                        this.classList.add('selected');
+                        state.buildingType = this.getAttribute('data-building');
+                        
+                        // Animate selection
+                        animateSelection(this);
+                    });
+                });
+                
+                // Step 3: Installation type selection
+                document.querySelectorAll('[data-installation]').forEach(card => {
+                    card.addEventListener('click', function() {
+                        // Remove selection from all cards
+                        document.querySelectorAll('[data-installation]').forEach(c => {
+                            c.classList.remove('selected');
+                        });
+                        
+                        // Select clicked card
+                        this.classList.add('selected');
+                        state.installation = this.getAttribute('data-installation');
+                        
+                        // Animate selection
+                        animateSelection(this);
+                    });
+                });
+                
+                // Step 3: Location selection
+                locationSelect.addEventListener('change', function() {
+                    state.location = this.value;
+                    // Add animation to select
+                    this.style.transform = 'scale(1.02)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+                
+                // Step 3: Navigation
+                nextStep3Btn.addEventListener('click', function() {
+                    if (!state.buildingType || !state.location) {
+                        showAlert('Please complete all fields to get an estimate.');
+                        return;
+                    }
+                    
+                    // Calculate and display estimate
+                    calculateEstimate();
+                    goToStep(4);
+                });
+                
+                prevStep3Btn.addEventListener('click', function() {
+                    goToStep(2);
+                });
+                
+                // Step 4: Navigation
+                prevStep4Btn.addEventListener('click', function() {
+                    goToStep(3);
+                });
+                
+                confirmEstimateBtn.addEventListener('click', function() {
+                    showConfirmationModal();
+                });
+                
+                // Modal controls
+                modalClose.addEventListener('click', function() {
+                    closeModal();
+                });
+                
+                // Close modal when clicking outside
+                confirmationModal.addEventListener('click', function(e) {
+                    if (e.target === confirmationModal) {
+                        closeModal();
+                    }
+                });
+                
+                // Confirmation form submission
+                confirmationForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('confirmName').value.trim();
+                    const phone = document.getElementById('confirmPhone').value.trim();
+                    const email = document.getElementById('confirmEmail').value.trim();
+                    const message = document.getElementById('confirmMessage').value.trim();
+                    
+                    // Simple validation
+                    if (!name || !phone) {
+                        showConfirmMessage('Please fill in required fields.', 'error');
+                        return;
+                    }
+                    
+                    // Show loading state
+                    const submitBtn = this.querySelector('button[type="submit"]');
+                    const originalText = submitBtn.innerHTML;
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitBtn.disabled = true;
+                    
+                    // Simulate API call
+                    setTimeout(() => {
+                        // In a real application, you would send this data to your server
+                        // For demo purposes, we'll show a success message
+                        showConfirmMessage('Thank you! Our elevator expert will contact you within 24 hours to discuss your project and provide an exact quote.', 'success');
+                        
+                        // Reset form after 3 seconds
+                        setTimeout(() => {
+                            confirmationForm.reset();
+                            closeModal();
+                            submitBtn.innerHTML = originalText;
+                            submitBtn.disabled = false;
+                        }, 3000);
+                    }, 1500);
+                });
+                
+                // Add keyboard support
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && confirmationModal.classList.contains('active')) {
+                        closeModal();
+                    }
+                    
+                    // Navigate with arrow keys
+                    if (currentStep === 1 && e.key === 'Enter') {
+                        nextStep1Btn.click();
+                    }
+                });
+            }
+            
+            function goToStep(step) {
+                // Hide all steps
+                steps.forEach(s => s.classList.remove('active'));
+                
+                // Show current step
+                document.getElementById(`step${step}`).classList.add('active');
+                
+                // Update progress bar
+                progressFill.style.width = `${((step - 1) / 3) * 100}%`;
+                
+                // Update step indicators
+                stepCircles.forEach((circle, index) => {
+                    circle.classList.remove('active', 'completed');
+                    
+                    if (index + 1 < step) {
+                        circle.classList.add('completed');
+                    } else if (index + 1 === step) {
+                        circle.classList.add('active');
+                    }
+                });
+                
+                // Update step labels
+                stepLabels.forEach((label, index) => {
+                    label.classList.remove('active');
+                    
+                    if (index + 1 === step) {
+                        label.classList.add('active');
+                    }
+                });
+                
+                // Scroll to top of estimator
+                document.querySelector('.estimator-container').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'start' 
+                });
+                
+                currentStep = step;
+                
+                // Add entrance animation to step content
+                const stepContent = document.querySelector(`#step${step}`);
+                stepContent.style.animation = 'none';
+                setTimeout(() => {
+                    stepContent.style.animation = 'fadeIn 0.5s ease';
+                }, 10);
+            }
+            
+            function calculateEstimate() {
+                if (!state.elevatorType) return;
+                
+                // Get base price for selected elevator type
+                const basePrices = priceRanges[state.elevatorType];
+                
+                // Calculate multipliers
+                const floorsMultiplier = multipliers.floors.base + (multipliers.floors.perFloor * (state.floors - 2));
+                const capacityMultiplier = multipliers.capacity.base + (multipliers.capacity.perPerson * (state.capacity - (state.elevatorType === 'freight' ? 1 : 4)));
+                const qualityMultiplier = multipliers.quality[state.quality];
+                const buildingMultiplier = multipliers.buildingType[state.buildingType] || 1;
+                const locationMultiplier = multipliers.location[state.location] || 1;
+                const installationMultiplier = multipliers.installation[state.installation];
+                
+                // Calculate final prices
+                const basicFinal = Math.round(basePrices.basic * floorsMultiplier * capacityMultiplier * multipliers.quality.basic * buildingMultiplier * locationMultiplier * installationMultiplier);
+                const standardFinal = Math.round(basePrices.standard * floorsMultiplier * capacityMultiplier * multipliers.quality.standard * buildingMultiplier * locationMultiplier * installationMultiplier);
+                const premiumFinal = Math.round(basePrices.premium * floorsMultiplier * capacityMultiplier * multipliers.quality.premium * buildingMultiplier * locationMultiplier * installationMultiplier);
+                
+                // Animate price display
+                animatePriceChange(estimatedPrice, standardFinal, 1500);
+                animatePriceChange(basicPrice, basicFinal, 1500);
+                animatePriceChange(standardPrice, standardFinal, 1500);
+                animatePriceChange(premiumPrice, premiumFinal, 1500);
+            }
+            
+            function animatePriceChange(element, targetValue, duration) {
+                const startValue = parseFloat(element.textContent.replace(/[^0-9]/g, '')) || 0;
+                const startTime = performance.now();
+                
+                function update(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / duration, 1);
+                    
+                    // Easing function
+                    const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+                    
+                    const currentValue = startValue + (targetValue - startValue) * easeOutQuart;
+                    element.textContent = formatPrice(currentValue);
+                    
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    } else {
+                        element.textContent = formatPrice(targetValue);
+                    }
+                }
+                
+                requestAnimationFrame(update);
+            }
+            
+            function formatPrice(price) {
+                if (price >= 10000000) {
+                    return `₹ ${(price / 10000000).toFixed(1)} Cr`;
+                } else if (price >= 100000) {
+                    return `₹ ${(price / 100000).toFixed(1)} L`;
+                } else {
+                    return `₹ ${Math.round(price).toLocaleString()}`;
+                }
+            }
+            
+            function showConfirmationModal() {
+                // Update summary with current state
+                const typeMap = {
+                    passenger: 'Passenger Elevator',
+                    home: 'Home Elevator',
+                    hospital: 'Hospital Elevator',
+                    commercial: 'Commercial Elevator',
+                    freight: 'Freight Elevator',
+                    accessibility: 'Accessibility Elevator'
+                };
+                
+                const buildingMap = {
+                    residential: 'Residential',
+                    commercial: 'Commercial',
+                    hospital: 'Hospital/Healthcare',
+                    industrial: 'Industrial'
+                };
+                
+                const locationMap = {
+                    central: 'Central Bangalore',
+                    north: 'North Bangalore',
+                    south: 'South Bangalore',
+                    east: 'East Bangalore',
+                    west: 'West Bangalore',
+                    other: 'Other (Karnataka)'
+                };
+                
+                summaryType.textContent = typeMap[state.elevatorType] || '-';
+                summaryFloors.textContent = state.floors + ' floors';
+                
+                if (state.elevatorType === 'freight') {
+                    summaryCapacity.textContent = (state.capacity * 100) + ' kg';
+                } else {
+                    summaryCapacity.textContent = state.capacity + ' persons';
+                }
+                
+                summaryBuilding.textContent = buildingMap[state.buildingType] || '-';
+                summaryLocation.textContent = locationMap[state.location] || '-';
+                summaryPrice.textContent = estimatedPrice.textContent;
+                
+                // Show modal with animation
+                confirmationModal.style.display = 'flex';
+                setTimeout(() => {
+                    confirmationModal.classList.add('active');
+                }, 10);
+                
+                // Focus on first input
+                setTimeout(() => {
+                    document.getElementById('confirmName').focus();
+                }, 300);
+            }
+            
+            function closeModal() {
+                confirmationModal.classList.remove('active');
+                setTimeout(() => {
+                    confirmationModal.style.display = 'none';
+                }, 300);
+            }
+            
+            function showConfirmMessage(text, type) {
+                confirmMessageEl.textContent = text;
+                confirmMessageEl.className = `form-message ${type}`;
+                confirmMessageEl.style.display = 'block';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    confirmMessageEl.style.opacity = '0';
+                    setTimeout(() => {
+                        confirmMessageEl.style.opacity = '1';
+                        confirmMessageEl.style.display = 'none';
+                    }, 500);
+                }, 5000);
+            }
+            
+            function showAlert(message) {
+                // Create alert element
+                const alertEl = document.createElement('div');
+                alertEl.className = 'form-message error';
+                alertEl.textContent = message;
+                alertEl.style.position = 'fixed';
+                alertEl.style.top = '100px';
+                alertEl.style.left = '50%';
+                alertEl.style.transform = 'translateX(-50%)';
+                alertEl.style.zIndex = '9999';
+                alertEl.style.maxWidth = '400px';
+                alertEl.style.animation = 'fadeInUp 0.3s ease';
+                
+                document.body.appendChild(alertEl);
+                
+                // Remove after 3 seconds
+                setTimeout(() => {
+                    alertEl.style.opacity = '0';
+                    alertEl.style.transform = 'translateX(-50%) translateY(-20px)';
+                    setTimeout(() => {
+                        document.body.removeChild(alertEl);
+                    }, 300);
+                }, 3000);
+            }
+            
+            function animateSelection(element) {
+                // Add ripple effect
+                const ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.backgroundColor = 'rgba(74, 110, 224, 0.3)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.pointerEvents = 'none';
+                
+                // Get click position
+                const rect = element.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = rect.width / 2;
+                const y = rect.height / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x - size / 2 + 'px';
+                ripple.style.top = y - size / 2 + 'px';
+                
+                element.appendChild(ripple);
+                
+                // Remove ripple after animation
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            }
+            
+            function updateRangeVisual(rangeInput) {
+                const value = parseInt(rangeInput.value);
+                const min = parseInt(rangeInput.min);
+                const max = parseInt(rangeInput.max);
+                const percent = ((value - min) / (max - min)) * 100;
+                
+                // Update custom progress indicator
+                rangeInput.style.setProperty('--progress-width', `${percent}%`);
+                
+                // Add subtle scale animation to value display
+                const valueDisplay = rangeInput.parentElement.querySelector('.range-value');
+                valueDisplay.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    valueDisplay.style.transform = 'scale(1)';
+                }, 150);
+            }
+            
+            // Initialize with default selections
+            setTimeout(() => {
+                // Select passenger elevator by default
+                const passengerCard = document.querySelector('[data-type="passenger"]');
+                if (passengerCard) {
+                    passengerCard.classList.add('selected');
+                    state.elevatorType = 'passenger';
+                }
+                
+                // Select standard quality by default
+                const standardQuality = document.querySelector('[data-quality="standard"]');
+                if (standardQuality) {
+                    standardQuality.classList.add('selected');
+                }
+                
+                // Select new installation by default
+                const newInstallation = document.querySelector('[data-installation="new"]');
+                if (newInstallation) {
+                    newInstallation.classList.add('selected');
+                }
+                
+                // Set initial range visuals
+                updateRangeVisual(floorsInput);
+                updateRangeVisual(capacityInput);
+                
+                // Format initial values
+                floorsValue.textContent = state.floors + ' floors';
+                
+                if (state.elevatorType === 'freight') {
+                    capacityValue.textContent = (state.capacity * 100) + ' kg';
+                } else {
+                    capacityValue.textContent = state.capacity + ' persons';
+                }
+            }, 100);
+            
+            // Add phone number formatting
+            const phoneInput = document.getElementById('confirmPhone');
+            if (phoneInput) {
+                phoneInput.addEventListener('input', function(e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    
+                    if (value.startsWith('91')) {
+                        value = value.substring(2);
+                    }
+                    
+                    if (value.length > 0) {
+                        value = '+91 ' + value;
+                    }
+                    
+                    e.target.value = value;
+                });
+            }
+        }
+    </script>
+</body>
+</html>
